@@ -1,0 +1,30 @@
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@crate_index//:defs.bzl", "aliases", "all_crate_deps")
+load("//:defs.bzl", "rust_proto_library")
+load("@rules_rust//rust:defs.bzl", "rust_binary", "rust_test")
+
+package(default_visibility = ["//visibility:public"])
+
+proto_library(
+    name = "echo_proto",
+    srcs = [
+        "echo.proto",
+        "echo.messages.proto",
+    ],
+    deps = []
+)
+
+rust_proto_library(
+    name = "echo_proto.rs",
+    proto = ":echo_proto",
+)
+
+rust_binary(
+    name = "echo",
+    srcs = ["src/main.rs"],
+    aliases = aliases(),
+    proc_macro_deps = all_crate_deps(proc_macro = True),
+    deps = all_crate_deps(normal = True) + [
+        ":echo_proto.rs",
+    ],
+)

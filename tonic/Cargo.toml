@@ -1,0 +1,21 @@
+[package]
+edition = "2021"
+name = "rules_tonic"
+version = "0.1.0"
+
+[lib]
+name = "tonic_proto_transpiler"
+path = "src/lib.rs"
+
+[[bin]]
+name = "tonic_proto_transpiler_bin"
+path = "src/bin.rs"
+
+[dependencies]
+anyhow = "1"
+bytes = "1"
+prost = "0"
+prost-types = "0"
+structopt = "0"
+tonic = "0"
+tonic-build = "0"

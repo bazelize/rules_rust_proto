@@ -1,0 +1,6 @@
+[workspace]
+members = [
+  "tonic",
+  "examples/echo",
+  "examples/multi_package",
+]

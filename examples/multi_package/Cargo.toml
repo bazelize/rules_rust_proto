@@ -1,0 +1,17 @@
+[package]
+edition = "2021"
+name = "multi_package"
+version = "0.1.0"
+
+[[bin]]
+name = "multi_package_bin"
+path = "src/main.rs"
+
+[dependencies]
+async-trait = "0"
+futures = "0"
+prost = "0"
+tokio = "1"
+tonic = "0"
+# Uncomment this line after bazel building everything to make vscode syntax highlighting work.
+# service_proto = {path = "../../bazel-out/darwin-fastbuild/bin/examples/multi_package/service_proto.cargo"}

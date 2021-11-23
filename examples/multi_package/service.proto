@@ -1,0 +1,20 @@
+
+syntax = "proto3";
+
+package grpc.examples.echo;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+// EchoRequest is the request for echo.
+message EchoRequest {
+  string message = 1;
+  google.protobuf.Timestamp time = 2;
+}
+
+
+// Echo is the echo service.
+service Echo {
+  // UnaryEcho is unary echo.
+  rpc UnaryEcho(EchoRequest) returns (google.protobuf.Empty) {}
+}
