@@ -1,19 +1,21 @@
-## rules_tonic
+## rules_rust_proto
 
-Bazel rules for compiling grpc and protobufs using Tonic and Prost.
+Bazel rules for transpiling grpc and protobufs for Rust.
 
-## Using
-
+## Usage
 
 Load the rules by adding the following in your `WORKSPACE`:
 ````python
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
-    name = "rules_tonic",
+    name = "rules_rust_proto",
     sha256 = "<sha256>",
-    urls = ["https://github.com/bazelwork/rules_tonic/archive/refs/heads/main.zip"],
+    urls = ["https://github.com/bazelwork/rules_rust_proto/archive/refs/heads/main.zip"],
 )
+
+# To use the Tonic implementation, register the tonic toolchain.
+register_toolchains("@rules_rust_proto//tonic:proto_toolchain")
 ````
 
 In your `BUILD.bazel` add:
@@ -29,7 +31,6 @@ proto_library(
     name = "echo_proto",
     srcs = [
         "echo.proto",
-        "echo.messages.proto",
     ],
     deps = []
 )

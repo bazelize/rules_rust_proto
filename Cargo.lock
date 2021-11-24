@@ -708,19 +708,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "rules_tonic"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "bytes",
- "prost",
- "prost-types",
- "structopt",
- "tonic",
- "tonic-build",
-]
-
-[[package]]
 name = "slab"
 version = "0.4.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -904,6 +891,19 @@ dependencies = [
  "prost-build",
  "quote",
  "syn",
+]
+
+[[package]]
+name = "tonic_transpiler"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bytes",
+ "prost",
+ "prost-types",
+ "structopt",
+ "tonic",
+ "tonic-build",
 ]
 
 [[package]]

@@ -1,15 +1,12 @@
-load(":toolchain.bzl", "tonic_toolchain")
+load("//toolchain:toolchain.bzl", "rust_proto_toolchain")
 load("@crate_index//:defs.bzl", "aliases", "all_crate_deps", "crate_deps")
 load("@rules_rust//rust:defs.bzl", "rust_binary", "rust_library")
 
 package(default_visibility = ["//visibility:public"])
 
-toolchain_type(
-    name = "toolchain_type",
-)
-
-tonic_toolchain(
-    name = "tonic_toolchain",
+rust_proto_toolchain(
+    name = "tonic_proto_toolchain",
+    proto_transpiler = ":tonic_proto_transpiler_bin",
     runtime_deps = crate_deps([
         "prost",
         "tonic",
@@ -17,9 +14,9 @@ tonic_toolchain(
 )
 
 toolchain(
-    name = "toolchain",
-    toolchain = ":tonic_toolchain",
-    toolchain_type = ":toolchain_type",
+    name = "proto_toolchain",
+    toolchain = ":tonic_proto_toolchain",
+    toolchain_type = "//toolchain:toolchain_type",
 )
 
 rust_library(

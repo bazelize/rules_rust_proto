@@ -8,10 +8,10 @@ package(default_visibility = ["//visibility:public"])
 proto_library(
     name = "echo_proto",
     srcs = [
-        "echo.proto",
         "echo.messages.proto",
+        "echo.proto",
     ],
-    deps = []
+    deps = [],
 )
 
 rust_proto_library(
